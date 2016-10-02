@@ -13,7 +13,8 @@ Page({
         page:1,
         postsList:[
           
-        ]
+        ],
+        hidden:false
   },
   
   onLoad: function () {
@@ -48,7 +49,7 @@ Page({
     })
 
     that.fetchImgListDate();
-    console.log(that.data.postsList)
+   // console.log(that.data.postsList)
   },
   //跳转至详情页
   redictDetail:function(e){
@@ -71,6 +72,9 @@ Page({
  
   fetchImgListDate:function(data){
     var self = this;
+    self.setData({
+      hidden: false
+    });
       if (!data) data = {};
       if (!data.page) data.page = 1;
       if (data.page === 1) {
@@ -105,7 +109,11 @@ Page({
                  postsList:self.data.postsList
                })
               //   self.data.postsList = contentObj
-               
+               setTimeout(function () {
+                  self.setData({
+                    hidden: true
+                  });
+              }, 300);
           }
       })
       
