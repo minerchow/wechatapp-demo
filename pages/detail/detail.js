@@ -1,6 +1,6 @@
 var ajaxUrl = require('../../utils/url.js');
 var util = require('../../utils/util.js');
-var _ = require( '../../libs/underscore.js' );
+
 var app = getApp();
 Page({
     data:{
@@ -43,9 +43,12 @@ Page({
                          "content":res.data.data.content
                     })
                     var tagList = [];
-                    _.each(res.data.data.tags,function(v,i){
+                    // _.each(res.data.data.tags,function(v,i){
+                    //     tagList.push(res.data.data.tags[i])
+                    // })
+                    for(var i in res.data.data.tags){
                         tagList.push(res.data.data.tags[i])
-                    })
+                    }
                      that.setData({
                          "tag":tagList
                      })   

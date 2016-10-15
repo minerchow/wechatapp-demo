@@ -1,4 +1,4 @@
-var _ = require( '../../libs/underscore.js' );
+
 var ajaxUrl = require('../../utils/url.js');
 var app = getApp()
 Page({
@@ -36,9 +36,12 @@ Page({
           //console.log(res.data.data)
           //将图片从接口拿过来，并且用七牛参数处理一下
           var bannerImg = [];
-          _.each(res.data.data.banner,function(v,i){
-              bannerImg.push(ajaxUrl.cdnUrl() + v.image+"?imageView2/1/w/750/h/380/q/60");
-          })
+          // _.each(res.data.data.banner,function(v,i){
+          //     bannerImg.push(ajaxUrl.cdnUrl() + v.image+"?imageView2/1/w/750/h/380/q/60");
+          // })
+          for(var i in res.data.data.banner){
+            bannerImg.push(ajaxUrl.cdnUrl() + res.data.data.banner[i].image+"?imageView2/1/w/750/h/380/q/60");
+          }
          
           that.setData({
             'imgUrls':bannerImg
@@ -97,13 +100,20 @@ Page({
           success: function(res) {
              // var contentObj = [];
                if(res.data.result == 0){
-                  _.each(res.data.data.result,function(v,i){
-                      self.data.postsList.push({
-                        imgUrl: v.image+"?imageMogr/v2/auto-orient/thumbnail/750x/quality/80/",
-                        userId:v.userId,
-                        suitId:v.suitId
+                  // _.each(res.data.data.result,function(v,i){
+                  //     self.data.postsList.push({
+                  //       imgUrl: v.image+"?imageMogr/v2/auto-orient/thumbnail/750x/quality/80/",
+                  //       userId:v.userId,
+                  //       suitId:v.suitId
+                  //     });
+                  // });
+                  for(var i in res.data.data.result){
+                    self.data.postsList.push({
+                        imgUrl: res.data.data.result[i].image+"?imageMogr/v2/auto-orient/thumbnail/750x/quality/80/",
+                        userId:res.data.data.result[i].userId,
+                        suitId:res.data.data.result[i].suitId
                       });
-                  });
+                  }
                }
                self.setData({
                  postsList:self.data.postsList
