@@ -98,15 +98,10 @@ Page({
           'Content-Type': 'application/json'
           },
           success: function(res) {
+            console.log(res)
              // var contentObj = [];
                if(res.data.result == 0){
-                  // _.each(res.data.data.result,function(v,i){
-                  //     self.data.postsList.push({
-                  //       imgUrl: v.image+"?imageMogr/v2/auto-orient/thumbnail/750x/quality/80/",
-                  //       userId:v.userId,
-                  //       suitId:v.suitId
-                  //     });
-                  // });
+                
                   for(var i in res.data.data.result){
                     self.data.postsList.push({
                         imgUrl: res.data.data.result[i].image+"?imageMogr/v2/auto-orient/thumbnail/750x/quality/80/",
