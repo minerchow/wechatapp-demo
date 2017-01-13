@@ -1,3 +1,4 @@
 <template name="tplContent">
     <view class="content">{{content}}</view>
+    
 </template>
