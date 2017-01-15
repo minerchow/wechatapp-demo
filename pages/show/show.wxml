@@ -14,7 +14,7 @@
                 <block wx:for="{{postsList}}" wx:key="unique">
                     <view>
                         <view class="viww-list" index="{{index}}" data-userid="{{item.userId}}" data-suitid="{{item.suitId}}" catchtap="redictDetail">
-                        <image  class="img" src="{{item.imgUrl}}" mode="aspectFill"></image>
+                        <image  class="img" src="{{item.imgUrl}}" mode="widthFix"></image>
                         </view>
                         
                     </view>
